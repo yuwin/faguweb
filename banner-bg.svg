@@ -1,0 +1,35 @@
+<svg width="1200" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 青海波紋樣 -->
+    <pattern id="seigaiha" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M25,0 A25,25 0 0,1 50,25 A25,25 0 0,1 25,50 A25,25 0 0,1 0,25 A25,25 0 0,1 25,0 Z" 
+            fill="none" stroke="#8b6b4a" stroke-width="0.5" opacity="0.08"/>
+      <path d="M-25,0 A25,25 0 0,1 0,25 A25,25 0 0,1 -25,50 A25,25 0 0,1 -50,25 A25,25 0 0,1 -25,0 Z" 
+            fill="none" stroke="#8b6b4a" stroke-width="0.5" opacity="0.08"/>
+      <path d="M75,0 A25,25 0 0,1 100,25 A25,25 0 0,1 75,50 A25,25 0 0,1 50,25 A25,25 0 0,1 75,0 Z" 
+            fill="none" stroke="#8b6b4a" stroke-width="0.5" opacity="0.08"/>
+    </pattern>
+    
+    <!-- 菱形紋樣 -->
+    <pattern id="diamond" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M10,0 L20,10 L10,20 L0,10 Z" fill="none" stroke="#8b6b4a" stroke-width="0.5" opacity="0.05"/>
+    </pattern>
+  </defs>
+  
+  <!-- 背景圖層 -->
+  <rect width="100%" height="100%" fill="url(#seigaiha)"/>
+  <rect width="100%" height="100%" fill="url(#diamond)"/>
+  
+  <!-- 中央裝飾 -->
+  <g transform="translate(600,150)">
+    <!-- 外圈 -->
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#8b6b4a" stroke-width="1" opacity="0.1"/>
+    
+    <!-- 內圈 -->
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#8b6b4a" stroke-width="1" opacity="0.1"/>
+    
+    <!-- 中心圖案 -->
+    <path d="M-20,-20 L20,-20 L20,20 L-20,20 Z" fill="none" stroke="#8b6b4a" stroke-width="1" opacity="0.1"/>
+    <circle cx="0" cy="0" r="15" fill="none" stroke="#8b6b4a" stroke-width="1" opacity="0.1"/>
+  </g>
+</svg>
