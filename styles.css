@@ -1,12 +1,13 @@
 /* Global styles */
 :root {
-    --primary-color: #4a4a4a;
-    --secondary-color: #f5f5f5;
-    --accent-color: #3273dc;
-    --text-color: #333;
-    --border-color: #dbdbdb;
-    --hover-color: #363636;
-    --footer-bg: #f8f8f8;
+    --primary-color: #222; /* 墨黑 */
+    --secondary-color: #f7f6f2; /* 宣紙白 */
+    --accent-color: #6b7a8f; /* 淡墨藍灰 */
+    --text-color: #2d2d2d;
+    --border-color: #bdbdbd;
+    --hover-color: #444;
+    --footer-bg: #f3f1ec;
+    --ink-shadow: 0 2px 16px 0 rgba(34,34,34,0.08), 0 1.5px 0 #e0ded9 inset;
 }
 
 /* Page Transition Animation */
@@ -16,13 +17,14 @@
 }
 
 body {
-    font-family: "Noto Sans TC", sans-serif;
-    line-height: 1.6;
+    font-family: "Noto Serif TC", "Noto Sans TC", serif;
+    background: url('https://cdn.jsdelivr.net/gh/stevenjoezhang/chinese-ink-bg/ink-paper-light.png') repeat;
     color: var(--text-color);
-    display: flex;
-    flex-direction: column;
     min-height: 100vh;
     animation: fadeIn 0.5s ease-in;
+    letter-spacing: 0.04em;
+    font-size: 1.08rem;
+    padding-bottom: 0 !important;
 }
 
 /* 頁面過渡動畫 */
@@ -147,8 +149,10 @@ body {
 
 /* 導航欄樣式 */
 .navbar {
-  background-color: transparent;
-  padding: 2rem 0;
+  background: rgba(255,255,255,0.92);
+  border-bottom: 2px solid #e3e0d7;
+  box-shadow: 0 2px 12px rgba(34,34,34,0.04);
+  padding: 1.2rem 0;
   position: absolute;
   width: 100%;
   z-index: 1000;
@@ -156,18 +160,20 @@ body {
 }
 
 .navbar-brand {
-  color: var(--primary-color);
-  font-weight: 500;
-  font-size: 1.2rem;
-  letter-spacing: 0.1em;
+  font-size: 1.4rem;
+  letter-spacing: 0.22em;
+  font-weight: 700;
 }
 
 .nav-link {
-  color: var(--primary-color) !important;
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
-  padding: 0.5rem 1.5rem !important;
+  color: #222 !important;
+  font-family: "Noto Serif TC", serif;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  padding: 0.5rem 1.7rem !important;
   position: relative;
+  border-radius: 0 0 8px 8px;
+  transition: background 0.2s, color 0.2s;
 }
 
 .nav-link::after {
@@ -186,12 +192,17 @@ body {
   width: 30px;
 }
 
+.nav-link.active, .nav-link:hover {
+  background: linear-gradient(90deg, #e6e3dd 60%, #f7f6f2 100%);
+  color: #6b7a8f !important;
+}
+
 /* 橫幅區域 */
 .banner {
-  background-color: #f8f8f8;
-  padding: 12rem 0 6rem;
+  background: linear-gradient(180deg, #f7f6f2 80%, #e6e3dd 100%);
   position: relative;
   overflow: hidden;
+  padding: 8rem 0 4rem;
 }
 
 .banner::before {
@@ -204,22 +215,35 @@ body {
   background-color: var(--border-color);
 }
 
+.banner::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  background: url('https://cdn.jsdelivr.net/gh/stevenjoezhang/chinese-ink-bg/ink-brush-2.png') center 40%/cover no-repeat;
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.banner h1, .banner p {
+  position: relative;
+  z-index: 1;
+}
+
 .banner h1 {
-  font-size: 2rem;
-  color: var(--primary-color);
-  margin-bottom: 2rem;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  line-height: 1.6;
+  font-size: 2.6rem;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  color: #222;
+  text-shadow: 0 2px 8px #f3f1ec;
+  margin-bottom: 1.5rem;
 }
 
 .banner p {
-  font-size: 1rem;
-  color: var(--text-color);
-  letter-spacing: 0.1em;
-  line-height: 2;
-  max-width: 600px;
-  margin: 0 auto;
+  color: #444;
+  font-size: 1.18rem;
+  letter-spacing: 0.13em;
+  margin-bottom: 0.5rem;
 }
 
 /* 內容區域 */
@@ -228,11 +252,18 @@ body {
   border-bottom: 1px solid var(--border-color);
 }
 
+.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
 .card {
-  border: none;
-  border-radius: 0;
-  background-color: transparent;
-  margin-bottom: 4rem;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 3.5rem;
+    padding: 0.5rem 0 0.5rem 0;
 }
 
 .card-body {
@@ -240,11 +271,22 @@ body {
 }
 
 .card-title {
-  color: var(--primary-color);
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
+  font-size: 1.7rem;
+  letter-spacing: 0.18em;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 0.7rem;
+}
+
+.card-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 10px;
+  margin: 0.5rem auto 0 auto;
+  background: url('https://cdn.jsdelivr.net/gh/stevenjoezhang/chinese-ink-bg/ink-divider.png') center/contain no-repeat;
+  opacity: 0.45;
 }
 
 .card-text {
@@ -339,39 +381,34 @@ body {
 
 /* Footer styles */
 footer {
-    background-color: var(--footer-bg);
-    padding: 4rem 0;
-    margin-top: auto;
-    border-top: 1px solid var(--border-color);
-}
-
-.footer-section {
-  margin-bottom: 3rem;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: #ecf0f1;
+    padding: 3rem 0;
+    margin-top: 4rem;
+    font-size: 0.85rem; /* 縮小footer字體 */
 }
 
 .footer-title {
-  color: var(--primary-color);
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+    color: #f39c12;
+    font-size: 1.1rem; /* 調整標題字體大小 */
+    margin-bottom: 1rem;
+    font-weight: 500;
 }
 
 .footer-content {
-  color: var(--text-color);
-  font-size: 0.9rem;
-  line-height: 1.8;
-  letter-spacing: 0.05em;
+    font-size: 0.85rem; /* 縮小內容字體 */
+    line-height: 1.6;
 }
 
 .footer-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding-left: 0;
+    font-size: 0.85rem; /* 縮小列表字體 */
 }
 
 .footer-list li {
-  margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem; /* 縮小列表項目字體 */
 }
 
 /* 響應式調整 */
@@ -382,11 +419,12 @@ footer {
   }
 
   .banner {
-    padding: 8rem 0 4rem;
+    padding: 5rem 0 2.5rem;
   }
 
   .banner h1 {
     font-size: 1.5rem;
+    letter-spacing: 0.13em;
   }
 
   .banner p {
@@ -399,7 +437,8 @@ footer {
   }
 
   .card-title {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
+    letter-spacing: 0.12em;
   }
 
   footer {
@@ -416,6 +455,11 @@ footer {
 
   .footer-content {
     font-size: 0.85rem;
+  }
+
+  .container {
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
   }
 }
 
@@ -552,4 +596,199 @@ footer {
 
 .document-container:hover iframe {
   transform: scale(1.02);
+}
+
+/* 首頁大段落分隔線樣式 */
+hr.section-divider {
+  border: none;
+  border-top: 0.18rem solid #bdbdbd;
+  width: 60%;
+  margin: 3.5rem auto 2.5rem auto;
+  opacity: 0.4;
+  margin: 2.5rem auto;
+  opacity: 0.5;
+  border-image: url('https://cdn.jsdelivr.net/gh/stevenjoezhang/chinese-ink-bg/ink-divider.png') 30 stretch;
+}
+
+/* 現代橫向時間軸（模仿圖片風格） */
+.timeline-modern-container {
+    background: #3a4753;
+    border-radius: 8px;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+}
+.timeline-modern {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    min-height: 180px;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+}
+.timeline-modern::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #222c36;
+    z-index: 0;
+}
+.timeline-modern-item {
+    flex: 1 1 0;
+    min-width: 180px;
+    max-width: 220px;
+    margin: 0 1.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+.timeline-modern-year {
+    background: #232b33;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.4rem 1.2rem;
+    border-radius: 4px;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+}
+.timeline-modern-item::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background: #232b33;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+.timeline-modern-title {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+.timeline-modern-desc {
+    color: #cfd8dc;
+    font-size: 0.98rem;
+    line-height: 1.5;
+    min-height: 48px;
+}
+@media (max-width: 900px) {
+    .timeline-modern-item {
+        min-width: 160px;
+        margin: 0 0.7rem;
+    }
+    .timeline-modern-container {
+        padding: 1.2rem 0.3rem 1.2rem 0.3rem;
+    }
+}
+@media (max-width: 600px) {
+    .timeline-modern {
+        min-width: 600px;
+    }
+    .timeline-modern-item {
+        min-width: 120px;
+        max-width: 180px;
+    }
+    .timeline-modern-title {
+        font-size: 1rem;
+    }
+    .timeline-modern-desc {
+        font-size: 0.9rem;
+    }
+}
+
+/* 著作輪播卡片樣式 */
+.book-cover {
+    max-height: 340px;
+    width: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(34,34,34,0.13);
+    margin-bottom: 1.2rem;
+    background: #fff;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-size: 60% 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 48px;
+    height: 48px;
+}
+.carousel-control-prev-icon.bg-white,
+.carousel-control-next-icon.bg-white {
+    background-color: #fff !important;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+}
+.carousel-control-prev,
+.carousel-control-next {
+    width: 6%;
+}
+.carousel-item h4 {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    color: #222;
+}
+.carousel-item .mb-2 {
+    color: #444;
+    font-size: 1.04rem;
+}
+@media (max-width: 768px) {
+    .book-cover {
+        max-height: 200px;
+    }
+    .carousel-item h4 {
+        font-size: 1.1rem;
+    }
+    .carousel-item .mb-2 {
+        font-size: 0.95rem;
+    }
+}
+
+/* 返回頂端按鈕 */
+.back-to-top {
+    position: fixed;
+    right: 2.2rem;
+    bottom: 2.2rem;
+    width: 52px;
+    height: 52px;
+    background: #232b33;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(34,34,34,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    z-index: 2000;
+    cursor: pointer;
+    opacity: 0.85;
+    transition: background 0.2s, opacity 0.2s;
+}
+.back-to-top:hover {
+    background: #11171d;
+    opacity: 1;
+}
+@media (max-width: 600px) {
+    .back-to-top {
+        right: 1rem;
+        bottom: 1rem;
+        width: 42px;
+        height: 42px;
+        font-size: 1.4rem;
+    }
 }
