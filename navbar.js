@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             renderCarousel('worksCarousel', window.carouselConfig.works);
             renderCarousel('researchCarousel', window.carouselConfig.research);
             renderCarousel('citationCarousel', window.carouselConfig.citation);
+            renderCarousel('journalCarousel', window.carouselConfig.journal);
         }
     };
 
@@ -79,23 +80,35 @@ function renderCarousel(carouselId, items) {
     const carousel = document.getElementById(carouselId);
     if (!carousel || !items || !items.length) return;
     let inner = '';
-    items.forEach((item, idx) => {
+    // 每頁顯示3張卡片
+    for (let i = 0; i < items.length; i += 3) {
         inner += `
-            <div class="carousel-item${idx === 0 ? ' active' : ''}">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-md-4 text-center">
-                        <img src="${item.img}" class="img-fluid shadow book-cover" alt="${item.title}">
-                    </div>
-                    <div class="col-md-6">
-                        <h4 class="fw-bold mb-2">${item.title}</h4>
-                        <div class="mb-2">${item.subtitle || ''}</div>
-                        <div class="mb-2">${item.pubinfo || ''}</div>
-                        <div class="mb-2">${item.date || ''}</div>
-                    </div>
+            <div class="carousel-item${i === 0 ? ' active' : ''}">
+                <div class="row justify-content-center align-items-stretch">
+                    ${[0,1,2].map(j => {
+                        const item = items[i+j];
+                        if (!item) {
+                            // 空白卡片
+                            return `<div class='col-md-4 mb-3'></div>`;
+                        }
+                        return `
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <img src="${item.img}" class="img-fluid shadow book-cover" alt="${item.title}">
+                                <div class="card-body">
+                                    <h4 class="fw-bold mb-2">${item.title}</h4>
+                                    <div class="mb-2">${item.subtitle || ''}</div>
+                                    <div class="mb-2">${item.pubinfo || ''}</div>
+                                    <div class="mb-2">${item.date || ''}</div>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                    }).join('')}
                 </div>
             </div>
         `;
-    });
+    }
     carousel.innerHTML = `
         <div class="carousel-inner">
             ${inner}

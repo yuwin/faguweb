@@ -53,5 +53,35 @@ window.carouselConfig = {
       pubinfo: '引用單位：佛光山、淨空法師弘法團體',
       date: '2020-2024'
     }
+  ],
+  journal: [
+    {
+      img: 'https://i.imgur.com/1Q9Z1ZB.jpg',
+      title: '江味農居士佛學思想初探',
+      subtitle: '作者：李明哲',
+      pubinfo: '發表於《現代佛學》期刊第12期',
+      date: '2022年6月'
+    },
+    {
+      img: 'https://i.imgur.com/6Qw1QwB.jpg',
+      title: '江味農與近代佛教刊物',
+      subtitle: '作者：王小華',
+      pubinfo: '發表於《佛教文化》雜誌第45期',
+      date: '2021年12月'
+    },
+    {
+      img: 'https://i.imgur.com/8Qw1QwC.jpg',
+      title: '江味農居士的經典詮釋方法',
+      subtitle: '作者：陳志遠',
+      pubinfo: '發表於《宗教學研究》期刊第30卷',
+      date: '2023年3月'
+    },
+    {
+      img: 'https://i.imgur.com/1Q9Z1ZB.jpg',
+      title: '江味農與民國佛教期刊',
+      subtitle: '作者：林慧君',
+      pubinfo: '發表於《民國佛教研究》2020年第2期',
+      date: '2020年8月'
+    }
   ]
 }; 

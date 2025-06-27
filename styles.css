@@ -153,9 +153,8 @@ body {
   border-bottom: 2px solid #e3e0d7;
   box-shadow: 0 2px 12px rgba(34,34,34,0.04);
   padding: 1.2rem 0;
-  position: absolute;
+  position: relative;
   width: 100%;
-  z-index: 1000;
   border: none;
 }
 
@@ -271,7 +270,7 @@ body {
 }
 
 .card-title {
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   letter-spacing: 0.18em;
   margin-bottom: 1.2rem;
   font-weight: 700;
@@ -416,10 +415,11 @@ footer {
   .navbar {
     padding: 1rem 0;
     background-color: rgba(255, 255, 255, 0.95);
+    position: relative !important;
   }
 
   .banner {
-    padding: 5rem 0 2.5rem;
+    padding: 7.5rem 0 2.5rem 0 !important;
   }
 
   .banner h1 {
@@ -437,7 +437,7 @@ footer {
   }
 
   .card-title {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     letter-spacing: 0.12em;
   }
 
@@ -791,4 +791,20 @@ hr.section-divider {
         height: 42px;
         font-size: 1.4rem;
     }
+}
+
+/* 特設講座段落內文字體統一 */
+.about-card .card-body {
+  font-size: 1.08rem;
+}
+.about-card .card-body h2,
+.about-card .card-body h5 {
+  font-size: inherit;
+  font-weight: bold;
+}
+.about-card .card-body .card-text,
+.about-card .card-body ol,
+.about-card .card-body li {
+  font-size: inherit;
+  line-height: 2;
 }
