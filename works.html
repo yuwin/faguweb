@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;500&display=swap" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
 <body>
     <!-- 導航欄容器 -->
@@ -43,24 +45,52 @@
                         <div class="biography-content">
                             <p class="card-text">江味農居士畢生著作豐富，涵蓋經典註解、修行開示與佛理闡述等多個領域。其中《大乘起信論講義》、《楞嚴經要解》等作品，不僅展現了對經典的深入理解，更以現代人易於理解的方式詮釋了深奧的佛法義理。</p>
                         </div>
-                        <!-- 著作全集附圖展示卡片 -->
-                        <div class="works-images-gallery d-flex flex-row overflow-auto mt-3" id="worksImagesGallery"></div>
+                        <!-- 著作全集 Swiper 輪播卡片 -->
+                        <div class="swiper works-swiper mb-4">
+                          <div class="swiper-wrapper" id="worksSwiperWrapper"></div>
+                          <div class="swiper-pagination"></div>
+                          <div class="swiper-button-prev"></div>
+                          <div class="swiper-button-next"></div>
+                        </div>
                         <script>
                         document.addEventListener('DOMContentLoaded', function() {
-                          // 動態渲染 works 圖片卡片
                           if(window.carouselConfig && window.carouselConfig.works) {
-                            const gallery = document.getElementById('worksImagesGallery');
-                            gallery.innerHTML = window.carouselConfig.works.map(item => `
-                              <div class='special-card card flex-shrink-0 mx-2' style='width:200px;'>
-                                <img src='${item.img ? item.img : "https://via.placeholder.com/180x260?text=No+Image"}' class='card-img-top' alt='${item.title || ''}'>
-                                <div class='card-body p-2 text-center'>
-                                  <div class='special-card-title mb-2'>${item.title || ''}</div>
-                                  <div class='mb-1' style='font-size:0.97rem;'>${item.subtitle || ''}</div>
-                                  <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.pubinfo || ''}</div>
-                                  <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.date || ''}</div>
+                            const works = window.carouselConfig.works;
+                            // 隨機增加4張（可重複）
+                            const extra = Array.from({length: 4}, () => works[Math.floor(Math.random() * works.length)]);
+                            const allWorks = works.concat(extra);
+                            const wrapper = document.getElementById('worksSwiperWrapper');
+                            wrapper.innerHTML = allWorks.map(item => `
+                              <div class='swiper-slide'>
+                                <div class='special-card card h-100' style='width:220px;min-width:220px;max-width:220px;height:370px;'>
+                                  <img src='${item.img ? item.img : "https://via.placeholder.com/180x260?text=No+Image"}' class='card-img-top' style='max-height:180px;width:auto;margin:0 auto;object-fit:contain;background:#fff;border-radius:8px 8px 0 0;' alt='${item.title || ''}'>
+                                  <div class='card-body p-2 text-center' style='flex:1 1 auto;display:flex;flex-direction:column;justify-content:flex-start;'>
+                                    <div class='special-card-title mb-2'>${item.title || ''}</div>
+                                    <div class='mb-1' style='font-size:0.97rem;'>${item.subtitle || ''}</div>
+                                    <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.pubinfo || ''}</div>
+                                    <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.date || ''}</div>
+                                  </div>
                                 </div>
                               </div>
                             `).join('');
+                            new Swiper('.works-swiper', {
+                              slidesPerView: 1,
+                              spaceBetween: 24,
+                              loop: true,
+                              navigation: {
+                                nextEl: '.works-swiper .swiper-button-next',
+                                prevEl: '.works-swiper .swiper-button-prev',
+                              },
+                              pagination: {
+                                el: '.works-swiper .swiper-pagination',
+                                clickable: true,
+                              },
+                              breakpoints: {
+                                576: { slidesPerView: 2 },
+                                900: { slidesPerView: 3 },
+                                1200: { slidesPerView: 4 }
+                              }
+                            });
                           }
                         });
                         </script>
@@ -73,6 +103,13 @@
                         <div class="biography-content">
                             <p class="card-text">本區收錄江味農居士相關的期刊論文、雜誌專題與現代佛學期刊資料，涵蓋其思想、著作、歷史影響等多元面向，供學者與大眾參考。</p>
                         </div>
+                        <!-- 期刊資料 Swiper 輪播卡片 -->
+                        <div class="swiper journal-swiper mb-4">
+                          <div class="swiper-wrapper" id="journalSwiperWrapper"></div>
+                          <div class="swiper-pagination"></div>
+                          <div class="swiper-button-prev"></div>
+                          <div class="swiper-button-next"></div>
+                        </div>
                     </div>
                 </div>
                 <!-- 後人研究段落 -->
@@ -81,6 +118,13 @@
                         <h2 class="card-title text-center mb-4">後人研究</h2>
                         <div class="biography-content">
                             <p class="card-text">近代佛教學者對江味農居士的著作進行了深入研究，認為其詮釋方式既保持了傳統義理的純正，又能契合現代人的思維模式。其著作中對於心性、修行等議題的闡述，至今仍被視為重要的研究參考資料。</p>
+                        </div>
+                        <!-- 後人研究 Swiper 輪播卡片 -->
+                        <div class="swiper research-swiper mb-4">
+                          <div class="swiper-wrapper" id="researchSwiperWrapper"></div>
+                          <div class="swiper-pagination"></div>
+                          <div class="swiper-button-prev"></div>
+                          <div class="swiper-button-next"></div>
                         </div>
                     </div>
                 </div>
@@ -91,6 +135,13 @@
                         <div class="biography-content">
                             <p class="card-text">當代許多佛教團體在弘法過程中，經常引用江味農居士的著作觀點。其對於佛法的現代詮釋方式，不僅幫助了許多初學者理解深奧的佛理，也為現代佛教教育提供了寶貴的參考範例。</p>
                         </div>
+                        <!-- 弘化引用 Swiper 輪播卡片 -->
+                        <div class="swiper citation-swiper mb-4">
+                          <div class="swiper-wrapper" id="citationSwiperWrapper"></div>
+                          <div class="swiper-pagination"></div>
+                          <div class="swiper-button-prev"></div>
+                          <div class="swiper-button-next"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -99,11 +150,124 @@
 
     <div id="footer-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="carouselConfig.js"></script>
     <script src="navbar.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
       fetch('footer.html').then(r=>r.text()).then(html=>{
         document.getElementById('footer-container').innerHTML = html;
       });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // ...原本著作全集 swiper 初始化...
+      // 期刊資料
+      if(window.carouselConfig && window.carouselConfig.journal) {
+        const wrapper = document.getElementById('journalSwiperWrapper');
+        wrapper.innerHTML = window.carouselConfig.journal.map(item => `
+          <div class='swiper-slide'>
+            <div class='special-card card h-100'>
+              <img src='${item.img ? item.img : "https://via.placeholder.com/180x260?text=No+Image"}' class='card-img-top' alt='${item.title || ''}'>
+              <div class='card-body p-2 text-center'>
+                <div class='special-card-title mb-2'>${item.title || ''}</div>
+                <div class='mb-1' style='font-size:0.97rem;'>${item.subtitle || ''}</div>
+                <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.pubinfo || ''}</div>
+                <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.date || ''}</div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+        new Swiper('.journal-swiper', {
+          slidesPerView: 1,
+          spaceBetween: 24,
+          loop: true,
+          navigation: {
+            nextEl: '.journal-swiper .swiper-button-next',
+            prevEl: '.journal-swiper .swiper-button-prev',
+          },
+          pagination: {
+            el: '.journal-swiper .swiper-pagination',
+            clickable: true,
+          },
+          breakpoints: {
+            576: { slidesPerView: 2 },
+            900: { slidesPerView: 3 },
+            1200: { slidesPerView: 4 }
+          }
+        });
+      }
+      // 後人研究
+      if(window.carouselConfig && window.carouselConfig.research) {
+        const wrapper = document.getElementById('researchSwiperWrapper');
+        wrapper.innerHTML = window.carouselConfig.research.map(item => `
+          <div class='swiper-slide'>
+            <div class='special-card card h-100'>
+              <img src='${item.img ? item.img : "https://via.placeholder.com/180x260?text=No+Image"}' class='card-img-top' alt='${item.title || ''}'>
+              <div class='card-body p-2 text-center'>
+                <div class='special-card-title mb-2'>${item.title || ''}</div>
+                <div class='mb-1' style='font-size:0.97rem;'>${item.subtitle || ''}</div>
+                <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.pubinfo || ''}</div>
+                <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.date || ''}</div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+        new Swiper('.research-swiper', {
+          slidesPerView: 1,
+          spaceBetween: 24,
+          loop: true,
+          navigation: {
+            nextEl: '.research-swiper .swiper-button-next',
+            prevEl: '.research-swiper .swiper-button-prev',
+          },
+          pagination: {
+            el: '.research-swiper .swiper-pagination',
+            clickable: true,
+          },
+          breakpoints: {
+            576: { slidesPerView: 2 },
+            900: { slidesPerView: 3 },
+            1200: { slidesPerView: 4 }
+          }
+        });
+      }
+      // 弘化引用
+      if(window.carouselConfig && window.carouselConfig.citation) {
+        const wrapper = document.getElementById('citationSwiperWrapper');
+        wrapper.innerHTML = window.carouselConfig.citation.map(item => `
+          <div class='swiper-slide'>
+            <div class='special-card card h-100'>
+              <img src='${item.img ? item.img : "https://via.placeholder.com/180x260?text=No+Image"}' class='card-img-top' alt='${item.title || ''}'>
+              <div class='card-body p-2 text-center'>
+                <div class='special-card-title mb-2'>${item.title || ''}</div>
+                <div class='mb-1' style='font-size:0.97rem;'>${item.subtitle || ''}</div>
+                <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.pubinfo || ''}</div>
+                <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.date || ''}</div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+        new Swiper('.citation-swiper', {
+          slidesPerView: 1,
+          spaceBetween: 24,
+          loop: true,
+          navigation: {
+            nextEl: '.citation-swiper .swiper-button-next',
+            prevEl: '.citation-swiper .swiper-button-prev',
+          },
+          pagination: {
+            el: '.citation-swiper .swiper-pagination',
+            clickable: true,
+          },
+          breakpoints: {
+            576: { slidesPerView: 2 },
+            900: { slidesPerView: 3 },
+            1200: { slidesPerView: 4 }
+          }
+        });
+      }
+    });
     </script>
 </body>
 </html>

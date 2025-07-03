@@ -909,3 +909,52 @@ hr.section-divider {
   border: 1.5px solid #bdbdbd;
   box-shadow: 0 6px 24px rgba(34,34,34,0.18);
 }
+
+.works-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+.works-swiper .card.special-card {
+  width: 220px;
+  min-width: 220px;
+  max-width: 220px;
+  height: 370px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.works-swiper .card-img-top {
+  max-height: 180px;
+  width: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 8px 8px 0 0;
+}
+.works-swiper .card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+/* Swiper arrows 更明顯 */
+.works-swiper .swiper-button-next, .works-swiper .swiper-button-prev {
+  color: #222;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(34,34,34,0.13);
+  width: 44px;
+  height: 44px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.works-swiper .swiper-button-next:after, .works-swiper .swiper-button-prev:after {
+  font-size: 1.7rem;
+}
+.works-swiper .swiper-button-next {
+  right: 0;
+}
+.works-swiper .swiper-button-prev {
+  left: 0;
+}
