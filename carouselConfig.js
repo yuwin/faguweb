@@ -1,25 +1,32 @@
 window.carouselConfig = {
   works: [
     {
-      img: 'https://i.imgur.com/1Q9Z1ZB.jpg',
+      img: '',
       title: '《大方廣圓覺修多羅了義經講義附親聞記》',
-      subtitle: '原刊書名：大方廣圓覺修多羅了義經講義附親聞記',
-      pubinfo: '出版資訊：台北：財團法人佛陀教育基金會，2020年出版',
-      date: '出版/發行時間：2020年'
+      subtitle: '《大方廣圓覺修多羅了義經講義附親聞記》',
+      pubinfo: '財團法人佛陀教育基金會',
+      date: '2020年9月'
     },
     {
-      img: 'https://i.imgur.com/6Qw1QwB.jpg',
-      title: '《金剛般若波羅蜜經講義》',
-      subtitle: '原刊書名：《金剛般若波羅蜜經講義》',
-      pubinfo: '原刊出版資訊：大藏經補編 第7冊 No.23 金剛般若波羅蜜經講義',
-      date: '出版/發行時間：2024年11月'
-    },
-    {
-      img: 'https://i.imgur.com/8Qw1QwC.jpg',
+      img: '',
       title: '《大乘止觀述記》',
-      subtitle: '原刊書名：《大乘止觀述記》',
-      pubinfo: '出版資訊：台北：財團法人佛陀教育基金會，2010年修訂版',
-      date: '出版/發行時間：2010年'
+      subtitle: '《大乘止觀述記》',
+      pubinfo: '財團法人佛陀教育基金會2010年修訂',
+      date: '2012年5月'
+    },
+    {
+      img: '',
+      title: '《金剛般若波羅蜜經講義》',
+      subtitle: '《金剛般若波羅蜜經講義》',
+      pubinfo: '大藏經補編 第 7 冊 No. 23 金剛般若波羅蜜經講義',
+      date: '2024年11月'
+    },
+    {
+      img: '',
+      title: '《江味農期刊文獻輯錄》',
+      subtitle: '《民國佛教期刊文獻集成》\n《民國佛教期刊文獻集成及補編》',
+      pubinfo: '北京市，全國圖書館文獻縮微復制中心\n北京市，中國書店',
+      date: '2006年\n2008年'
     }
   ],
   research: [

@@ -40,7 +40,33 @@
                         <div class="biography-content">
                             <p class="card-text">江味農居士畢生著作豐富，涵蓋經典註解、修行開示與佛理闡述等多個領域。其中《大乘起信論講義》、《楞嚴經要解》等作品，不僅展現了對經典的深入理解，更以現代人易於理解的方式詮釋了深奧的佛法義理。</p>
                         </div>
-                        <div id="worksCarousel" class="carousel slide my-5" data-bs-ride="carousel"></div>
+                        <div class="special-cards-wrapper position-relative">
+                            <button class="special-scroll-btn left" aria-label="向左滑動">&#8592;</button>
+                            <div class="special-cards-list d-flex flex-row overflow-auto" id="worksCardsList" style="scroll-behavior:smooth;"></div>
+                            <button class="special-scroll-btn right" aria-label="向右滑動">&#8594;</button>
+                        </div>
+                        <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                          // 動態渲染 works cards
+                          if(window.carouselConfig && window.carouselConfig.works) {
+                            const list = document.getElementById('worksCardsList');
+                            list.innerHTML = window.carouselConfig.works.map(item => `
+                              <div class='special-card card flex-shrink-0 mx-2'>
+                                <div class='card-body text-center'>
+                                  <img src='${item.img}' class='img-fluid book-cover mb-2' alt='${item.title}'>
+                                  <div class='special-card-title mb-1'>${item.title}</div>
+                                  <div class='mb-1' style='font-size:0.97rem;'>${item.subtitle||''}</div>
+                                  <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.pubinfo||''}</div>
+                                  <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.date||''}</div>
+                                </div>
+                              </div>
+                            `).join('');
+                          }
+                          const list = document.getElementById('worksCardsList');
+                          document.querySelector('.special-cards-wrapper .special-scroll-btn.left').onclick = () => list.scrollBy({left: -320, behavior: 'smooth'});
+                          document.querySelector('.special-cards-wrapper .special-scroll-btn.right').onclick = () => list.scrollBy({left: 320, behavior: 'smooth'});
+                        });
+                        </script>
                     </div>
                 </div>
                 <!-- 期刊資料段落 -->
@@ -50,7 +76,33 @@
                         <div class="biography-content">
                             <p class="card-text">本區收錄江味農居士相關的期刊論文、雜誌專題與現代佛學期刊資料，涵蓋其思想、著作、歷史影響等多元面向，供學者與大眾參考。</p>
                         </div>
-                        <div id="journalCarousel" class="carousel slide my-5" data-bs-ride="carousel"></div>
+                        <div class="special-cards-wrapper position-relative">
+                            <button class="special-scroll-btn left" aria-label="向左滑動">&#8592;</button>
+                            <div class="special-cards-list d-flex flex-row overflow-auto" id="journalCardsList" style="scroll-behavior:smooth;"></div>
+                            <button class="special-scroll-btn right" aria-label="向右滑動">&#8594;</button>
+                        </div>
+                        <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                          // 動態渲染 journal cards
+                          if(window.carouselConfig && window.carouselConfig.journal) {
+                            const list = document.getElementById('journalCardsList');
+                            list.innerHTML = window.carouselConfig.journal.map(item => `
+                              <div class='special-card card flex-shrink-0 mx-2'>
+                                <div class='card-body text-center'>
+                                  <img src='${item.img}' class='img-fluid book-cover mb-2' alt='${item.title}'>
+                                  <div class='special-card-title mb-1'>${item.title}</div>
+                                  <div class='mb-1' style='font-size:0.97rem;'>${item.subtitle||''}</div>
+                                  <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.pubinfo||''}</div>
+                                  <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.date||''}</div>
+                                </div>
+                              </div>
+                            `).join('');
+                          }
+                          const list = document.getElementById('journalCardsList');
+                          document.querySelectorAll('.special-cards-wrapper .special-scroll-btn.left')[1].onclick = () => list.scrollBy({left: -320, behavior: 'smooth'});
+                          document.querySelectorAll('.special-cards-wrapper .special-scroll-btn.right')[1].onclick = () => list.scrollBy({left: 320, behavior: 'smooth'});
+                        });
+                        </script>
                     </div>
                 </div>
                 <!-- 後人研究段落 -->
@@ -60,7 +112,33 @@
                         <div class="biography-content">
                             <p class="card-text">近代佛教學者對江味農居士的著作進行了深入研究，認為其詮釋方式既保持了傳統義理的純正，又能契合現代人的思維模式。其著作中對於心性、修行等議題的闡述，至今仍被視為重要的研究參考資料。</p>
                         </div>
-                        <div id="researchCarousel" class="carousel slide my-5" data-bs-ride="carousel"></div>
+                        <div class="special-cards-wrapper position-relative">
+                            <button class="special-scroll-btn left" aria-label="向左滑動">&#8592;</button>
+                            <div class="special-cards-list d-flex flex-row overflow-auto" id="researchCardsList" style="scroll-behavior:smooth;"></div>
+                            <button class="special-scroll-btn right" aria-label="向右滑動">&#8594;</button>
+                        </div>
+                        <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                          // 動態渲染 research cards
+                          if(window.carouselConfig && window.carouselConfig.research) {
+                            const list = document.getElementById('researchCardsList');
+                            list.innerHTML = window.carouselConfig.research.map(item => `
+                              <div class='special-card card flex-shrink-0 mx-2'>
+                                <div class='card-body text-center'>
+                                  <img src='${item.img}' class='img-fluid book-cover mb-2' alt='${item.title}'>
+                                  <div class='special-card-title mb-1'>${item.title}</div>
+                                  <div class='mb-1' style='font-size:0.97rem;'>${item.subtitle||''}</div>
+                                  <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.pubinfo||''}</div>
+                                  <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.date||''}</div>
+                                </div>
+                              </div>
+                            `).join('');
+                          }
+                          const list = document.getElementById('researchCardsList');
+                          document.querySelectorAll('.special-cards-wrapper .special-scroll-btn.left')[2].onclick = () => list.scrollBy({left: -320, behavior: 'smooth'});
+                          document.querySelectorAll('.special-cards-wrapper .special-scroll-btn.right')[2].onclick = () => list.scrollBy({left: 320, behavior: 'smooth'});
+                        });
+                        </script>
                     </div>
                 </div>
                 <!-- 弘化引用段落 -->
@@ -70,7 +148,33 @@
                         <div class="biography-content">
                             <p class="card-text">當代許多佛教團體在弘法過程中，經常引用江味農居士的著作觀點。其對於佛法的現代詮釋方式，不僅幫助了許多初學者理解深奧的佛理，也為現代佛教教育提供了寶貴的參考範例。</p>
                         </div>
-                        <div id="citationCarousel" class="carousel slide my-5" data-bs-ride="carousel"></div>
+                        <div class="special-cards-wrapper position-relative">
+                            <button class="special-scroll-btn left" aria-label="向左滑動">&#8592;</button>
+                            <div class="special-cards-list d-flex flex-row overflow-auto" id="citationCardsList" style="scroll-behavior:smooth;"></div>
+                            <button class="special-scroll-btn right" aria-label="向右滑動">&#8594;</button>
+                        </div>
+                        <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                          // 動態渲染 citation cards
+                          if(window.carouselConfig && window.carouselConfig.citation) {
+                            const list = document.getElementById('citationCardsList');
+                            list.innerHTML = window.carouselConfig.citation.map(item => `
+                              <div class='special-card card flex-shrink-0 mx-2'>
+                                <div class='card-body text-center'>
+                                  <img src='${item.img}' class='img-fluid book-cover mb-2' alt='${item.title}'>
+                                  <div class='special-card-title mb-1'>${item.title}</div>
+                                  <div class='mb-1' style='font-size:0.97rem;'>${item.subtitle||''}</div>
+                                  <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.pubinfo||''}</div>
+                                  <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.date||''}</div>
+                                </div>
+                              </div>
+                            `).join('');
+                          }
+                          const list = document.getElementById('citationCardsList');
+                          document.querySelectorAll('.special-cards-wrapper .special-scroll-btn.left')[3].onclick = () => list.scrollBy({left: -320, behavior: 'smooth'});
+                          document.querySelectorAll('.special-cards-wrapper .special-scroll-btn.right')[3].onclick = () => list.scrollBy({left: 320, behavior: 'smooth'});
+                        });
+                        </script>
                     </div>
                 </div>
             </div>

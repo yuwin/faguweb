@@ -27,18 +27,69 @@
                 <div class="card about-card mb-5">
                     <div class="card-body">
                         <h2 class="card-title text-center mb-4">專案與成果列表</h2>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">「江味農居士社群網絡與著作數位資料庫暨年譜」專案</li>
-                            <li class="list-group-item">《金剛經》與《金剛經》注疏相關研究與多語文獻對讀資料庫專案</li>
-                            <li class="list-group-item">《金剛經》與漢傳禪法之研修與應用專案</li>
-                            <li class="list-group-item">大乘佛教思想之社會學理論建構專案</li>
-                            <li class="list-group-item">般若空性等大乘思想與社會實踐研究</li>
-                            <li class="list-group-item">江味農相關研究專案</li>
-                            <li class="list-group-item">金剛經文獻相關研究專案</li>
-                            <li class="list-group-item">設立「江味農特設講座」碩博士論文撰寫與傑出博士論文獎助</li>
-                            <li class="list-group-item">設立海內外知名學府「江味農」博士後獎助</li>
-                            <li class="list-group-item">漢傳佛學國際研討會暨「江味農特設講座」研究發表專場</li>
-                        </ul>
+                        <div class="special-cards-wrapper position-relative">
+                            <button class="special-scroll-btn left" aria-label="向左滑動">&#8592;</button>
+                            <div class="special-cards-list d-flex flex-row overflow-auto" style="scroll-behavior:smooth;">
+                                <div class="special-card card flex-shrink-0 mx-2">
+                                    <div class="card-body">
+                                        <div class="special-card-title mb-2">江味農居士社群網絡與著作數位資料庫暨年譜專案</div>
+                                    </div>
+                                </div>
+                                <div class="special-card card flex-shrink-0 mx-2">
+                                    <div class="card-body">
+                                        <div class="special-card-title mb-2">《金剛經》與《金剛經》注疏相關研究與多語文獻對讀資料庫專案</div>
+                                    </div>
+                                </div>
+                                <div class="special-card card flex-shrink-0 mx-2">
+                                    <div class="card-body">
+                                        <div class="special-card-title mb-2">《金剛經》與漢傳禪法之研修與應用專案</div>
+                                    </div>
+                                </div>
+                                <div class="special-card card flex-shrink-0 mx-2">
+                                    <div class="card-body">
+                                        <div class="special-card-title mb-2">大乘佛教思想之社會學理論建構專案</div>
+                                    </div>
+                                </div>
+                                <div class="special-card card flex-shrink-0 mx-2">
+                                    <div class="card-body">
+                                        <div class="special-card-title mb-2">般若空性等大乘思想與社會實踐研究</div>
+                                    </div>
+                                </div>
+                                <div class="special-card card flex-shrink-0 mx-2">
+                                    <div class="card-body">
+                                        <div class="special-card-title mb-2">江味農相關研究專案</div>
+                                    </div>
+                                </div>
+                                <div class="special-card card flex-shrink-0 mx-2">
+                                    <div class="card-body">
+                                        <div class="special-card-title mb-2">金剛經文獻相關研究專案</div>
+                                    </div>
+                                </div>
+                                <div class="special-card card flex-shrink-0 mx-2">
+                                    <div class="card-body">
+                                        <div class="special-card-title mb-2">設立「江味農特設講座」碩博士論文撰寫與傑出博士論文獎助</div>
+                                    </div>
+                                </div>
+                                <div class="special-card card flex-shrink-0 mx-2">
+                                    <div class="card-body">
+                                        <div class="special-card-title mb-2">設立海內外知名學府「江味農」博士後獎助</div>
+                                    </div>
+                                </div>
+                                <div class="special-card card flex-shrink-0 mx-2">
+                                    <div class="card-body">
+                                        <div class="special-card-title mb-2">漢傳佛學國際研討會暨「江味農特設講座」研究發表專場</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="special-scroll-btn right" aria-label="向右滑動">&#8594;</button>
+                        </div>
+                        <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                          const list = document.querySelector('.special-cards-list');
+                          document.querySelector('.special-scroll-btn.left').onclick = () => list.scrollBy({left: -320, behavior: 'smooth'});
+                          document.querySelector('.special-scroll-btn.right').onclick = () => list.scrollBy({left: 320, behavior: 'smooth'});
+                        });
+                        </script>
                     </div>
                 </div>
             </div>
