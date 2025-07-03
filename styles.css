@@ -159,7 +159,7 @@ body {
 }
 
 .navbar-brand {
-  font-size: 1.32rem;
+  font-size: 1.54rem;
   letter-spacing: 0.22em;
   font-weight: 700;
   padding: 0.05rem 0;
@@ -178,7 +178,7 @@ body {
   position: relative;
   border-radius: 0 0 8px 8px;
   transition: background 0.2s, color 0.2s;
-  font-size: 1.335rem;
+  font-size: 1.17rem;
 }
 
 .nav-link::after {
@@ -903,4 +903,9 @@ hr.section-divider {
     height: 30px;
     font-size: 1.1rem;
   }
+}
+
+.about-card .card {
+  border: 1.5px solid #bdbdbd;
+  box-shadow: 0 6px 24px rgba(34,34,34,0.18);
 }

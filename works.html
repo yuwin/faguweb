@@ -43,37 +43,17 @@
                         <div class="biography-content">
                             <p class="card-text">江味農居士畢生著作豐富，涵蓋經典註解、修行開示與佛理闡述等多個領域。其中《大乘起信論講義》、《楞嚴經要解》等作品，不僅展現了對經典的深入理解，更以現代人易於理解的方式詮釋了深奧的佛法義理。</p>
                         </div>
-                        <!-- 附圖展示卡片 -->
+                        <!-- 著作全集附圖展示卡片 -->
                         <div class="works-images-gallery d-flex flex-row overflow-auto mt-3" id="worksImagesGallery"></div>
-                        <!-- 專案與成果列表樣式卡片 -->
-                        <div class="special-cards-wrapper position-relative mt-4">
-                            <button class="special-scroll-btn left" aria-label="向左滑動">&#8592;</button>
-                            <div class="special-cards-list d-flex flex-row overflow-auto" id="worksProjectCardsList" style="scroll-behavior:smooth;"></div>
-                            <button class="special-scroll-btn right" aria-label="向右滑動">&#8594;</button>
-                        </div>
                         <script>
                         document.addEventListener('DOMContentLoaded', function() {
                           // 動態渲染 works 圖片卡片
                           if(window.carouselConfig && window.carouselConfig.works) {
                             const gallery = document.getElementById('worksImagesGallery');
-                            gallery.innerHTML = window.carouselConfig.works.filter(item => item.img).map(item => `
-                              <div class='special-card card flex-shrink-0 mx-2' style='width:140px;'>
+                            gallery.innerHTML = window.carouselConfig.works.map(item => `
+                              <div class='special-card card flex-shrink-0 mx-2' style='width:200px;'>
+                                <img src='${item.img ? item.img : "https://via.placeholder.com/180x260?text=No+Image"}' class='card-img-top' alt='${item.title || ''}'>
                                 <div class='card-body p-2 text-center'>
-                                  <img src='${item.img}' class='img-fluid book-cover mb-2' alt='${item.title || ''}'>
-                                  <div class='special-card-title' style='font-size:0.95rem;'>${item.title || ''}</div>
-                                </div>
-                              </div>
-                            `).join('');
-                          }
-                          // 動態渲染專案與成果列表樣式卡片
-                          if(window.carouselConfig && window.carouselConfig.works) {
-                            const list = document.getElementById('worksProjectCardsList');
-                            // 隨機抽取 5 筆資料
-                            const shuffled = window.carouselConfig.works.slice().sort(() => Math.random() - 0.5);
-                            const selected = shuffled.slice(0, 5);
-                            list.innerHTML = selected.map(item => `
-                              <div class='special-card card flex-shrink-0 mx-2'>
-                                <div class='card-body'>
                                   <div class='special-card-title mb-2'>${item.title || ''}</div>
                                   <div class='mb-1' style='font-size:0.97rem;'>${item.subtitle || ''}</div>
                                   <div class='mb-1 text-muted' style='font-size:0.92rem;'>${item.pubinfo || ''}</div>
@@ -82,10 +62,6 @@
                               </div>
                             `).join('');
                           }
-                          // 滑動按鈕
-                          const list = document.getElementById('worksProjectCardsList');
-                          document.querySelector('.special-cards-wrapper .special-scroll-btn.left').onclick = () => list.scrollBy({left: -320, behavior: 'smooth'});
-                          document.querySelector('.special-cards-wrapper .special-scroll-btn.right').onclick = () => list.scrollBy({left: 320, behavior: 'smooth'});
                         });
                         </script>
                     </div>
